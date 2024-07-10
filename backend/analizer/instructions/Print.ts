@@ -14,6 +14,13 @@ export class Print extends Instruction {
   interpret(tree: Tree, table: SymbolsTable): any {
     let value = this.expression.interpret(tree, table);
     if (value instanceof Errors) return value;
+    if (this.expression.getType().getType() === dataType.STRING) {
+      value = value.replaceAll("\\'", "'");
+      value = value.replaceAll('\\"', '"');
+      value = value.replaceAll("\\t", "\t");
+      value = value.replaceAll("\\n", "\n");
+      value = value.replaceAll("\\\\", "\\");
+    }
     tree.setConsole(tree.getConsole() + value.toString() + "\n");
     return null;
   }

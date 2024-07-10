@@ -1,7 +1,7 @@
 import { Instruction } from "../abstract/Instruction";
 import { Tree } from "../symbol/Tree";
 import { SymbolsTable } from "../symbol/SymbolsTable";
-import { Type } from "../symbol/Type";
+import { dataType, Type } from "../symbol/Type";
 
 export class Native extends Instruction {
   private value: any;
